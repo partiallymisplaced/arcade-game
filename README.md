@@ -1,6 +1,14 @@
-frontend-nanodegree-arcade-game
-===============================
+# Arcade Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+### Summary
+This is inspired by Konami's 1981 arcade game, Frogger. The player's goal is to cross the road while avoiding collisions with oncoming traffic.
+Assets provided by Udacity.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+### Demo
+You can play the game at https://partiallymisplaced.github.io/arcade-game/
+
+### How to play
+The player starts at the bottom center square of the game.
+The player can move forward, backward, left and right by using the arrow keys.
+If the player collides with oncoming traffic, they return to square one.
+If the player crosses the road and reaches the water without colliding with traffic, the player wins and returns to square one for another round.
