@@ -50,9 +50,9 @@ var Engine = (function(global) {
     /* Called by update(). Loops through objects within allEnemies[] in app.js, calls their update() methods, then calls update() of the player object. Update methods should focus purely on updating the data/properties related to the object. Do drawing in render methods.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function(enemy) {
-            enemy.update(dt);
-        });
+        // allEnemies.forEach(function(enemy) {
+        //     enemy.update(dt);
+        // });
         player.update();
     }
 
@@ -85,17 +85,17 @@ var Engine = (function(global) {
             }
         }
 
-        // renderEntities();
+        renderEntities();
     }
 
     // Called by render() on each game tick. It then calls the render functions on enemy and player entities within app.js
     function renderEntities() {
         // Loops through objects within allEnemies[] and calls the render function from app.js.
-        allEnemies.forEach(function(enemy) {
-            //enemy.render();
-        });
+        // allEnemies.forEach(function(enemy) {
+        //     //enemy.render();
+        // });
 
-        // player.render();
+        player.render();
     }
 
     // Could be used to handle game reset states - new game menu, game over screen. Called once by the init() method.

@@ -26,11 +26,15 @@ Enemy.prototype.render = function() {
 
 var Player = function () {
   this.sprite = 'images/char-horn-girl.png';
+  this.x = 202;
+  this.y = 385;
 }
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+let player = new Player();
 
 // Listens for key presses and sends the keys to Player.handleInput()
 document.addEventListener('keyup', function(e) {
@@ -41,5 +45,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+    // player.handleInput(allowedKeys[e.keyCode]);
 });
