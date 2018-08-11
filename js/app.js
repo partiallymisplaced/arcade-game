@@ -1,9 +1,15 @@
 // Enemies
 var Enemy = function() {
-    // Variables applied to each of our instances go here
-    // Loads image of enemy
     this.sprite = 'images/enemy-bug.png';
+    this.x = 0;
+    this.y = 219;
 };
+
+let slowBug = new Enemy();
+let fastBug = new Enemy();
+let superfastBug = new Enemy();
+
+allEnemies = [slowBug]
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
