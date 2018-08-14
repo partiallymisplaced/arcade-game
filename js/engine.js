@@ -43,7 +43,7 @@ var Engine = (function(global) {
      * Either implement collision detection (when two entities occupy the same space) here, or in app.js. Commented out for the time being.
      */
     function update(dt) {
-        // updateEntities(dt);
+        updateEntities(dt);
         // checkCollisions();
     }
 

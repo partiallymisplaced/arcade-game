@@ -1,8 +1,9 @@
 // Enemies
 var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
-    this.x = 0;
+    this.x = -101;
     this.y = 219;
+    this.speed = 10;
 };
 
 let slowBug = new Enemy();
@@ -15,6 +16,7 @@ allEnemies = [slowBug]
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // Multiply any movement by the dt parameter which will ensure the game runs at the same speed for all computers.
+    this.x = this.x + this.speed * dt;
 };
 
 // Draws the enemy on the screen, required method for game
@@ -39,6 +41,9 @@ var Player = function () {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+Player.prototype.update = function() {
+}
 
 let player = new Player();
 
