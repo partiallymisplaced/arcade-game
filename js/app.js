@@ -1,25 +1,26 @@
 // Enemies
-var Enemy = function() {
+var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
-    this.x = -101;
-    this.y = 219;
-    this.speed = 100;
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
 };
 
-let slowBug = new Enemy();
-let fastBug = new Enemy();
-let superfastBug = new Enemy();
-
-allEnemies = [slowBug];
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
   this.x = this.x + this.speed * dt;
   if (this.x > 505) {
-    delete this.x;
+    this.x = -101;
   }
 };
+
+let slowBug = new Enemy(-101, 219, 100);
+let fastBug = new Enemy(-101, 136, 200);
+let superfastBug = new Enemy(-101, 53, 300);
+
+allEnemies = [slowBug, fastBug, superfastBug];
 
 // Draws the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
