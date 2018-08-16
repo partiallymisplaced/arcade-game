@@ -46,9 +46,19 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.update = function() {
+Player.prototype.reset = function() {
+  this.y = 385;
+  this.x = 202;
+
 }
 
+Player.prototype.update = function() {
+  if(this.y === -30) {
+    setTimeout(function(){
+      player.reset()
+    }, 100);
+  }
+}
 
 Player.prototype.handleInput = function(key) {
   if(key === 'up' && this.y > 0){
