@@ -34,7 +34,7 @@ var Engine = (function(global) {
 
     // Initializes the game
     function init() {
-        reset();
+        // reset();
         lastTime = Date.now();
         main();
     }
@@ -99,9 +99,9 @@ var Engine = (function(global) {
     }
 
     // Could be used to handle game reset states - new game menu, game over screen. Called once by the init() method.
-    function reset() {
-        // noop
-    }
+    // function reset() {
+    //     // noop
+    // }
 
     // Loads all images needed to draw game level, then sets init as the callback method so game will start when all images are loaded.
     Resources.load([

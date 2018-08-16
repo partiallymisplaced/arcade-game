@@ -6,9 +6,7 @@ var Enemy = function(x, y, speed) {
     this.speed = speed;
 };
 
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+// Updates the enemy's position every dt (time delta between ticks)
 Enemy.prototype.update = function(dt) {
   this.x = this.x + this.speed * dt;
   if (this.x > 505) {
@@ -16,23 +14,27 @@ Enemy.prototype.update = function(dt) {
   }
 };
 
-let slowBug = new Enemy(-101, 219, 100);
-let fastBug = new Enemy(-101, 136, 200);
-let superfastBug = new Enemy(-101, 53, 300);
-
-allEnemies = [slowBug, fastBug, superfastBug];
-
 // Draws the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+let slowBugOne = new Enemy(-101, 219, 100);
+let slowBugTwo = new Enemy(-401, 219, 100);
+let superfastBugOne = new Enemy(-201, 136, 200);
+let superfastBugTwo = new Enemy(-501, 136, 200);
+let fastBugOne = new Enemy(-151, 53 , 150);
+let fastBugTwo = new Enemy(-451, 53 , 150);
+
+allEnemies = [slowBugOne, slowBugTwo, superfastBugOne, superfastBugTwo, fastBugOne, fastBugTwo];
+
 
 // Define player class
 // Class requires update(), render() and handleInput() methods
 
 // Instantiate objects
 
-var Player = function () {
+var Player = function() {
   this.sprite = 'images/char-horn-girl.png';
   this.x = 202;
   this.y = 385;
