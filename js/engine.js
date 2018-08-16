@@ -42,9 +42,23 @@ var Engine = (function(global) {
     /* Called by main(). Calls all functions which may be needed to update an entity's data.
      * Either implement collision detection (when two entities occupy the same space) here, or in app.js. Commented out for the time being.
      */
+
+    function checkCollisions() {
+      for (let eachEnemy of allEnemies) {
+        // console.log(eachEnemy);
+        // console.log('player', player.y);
+        if (((player.x <= eachEnemy.x + 101) && (player.x >= eachEnemy.x - 101)) && (player.y === eachEnemy.y)) {
+          console.log('Bump.', eachEnemy)
+          setTimeout(function(){
+            player.reset()
+          }, 1);
+
+        }
+      }
+    }
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* Called by update(). Loops through objects within allEnemies[] in app.js, calls their update() methods, then calls update() of the player object. Update methods should focus purely on updating the data/properties related to the object. Do drawing in render methods.
