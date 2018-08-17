@@ -1,10 +1,9 @@
-/* Engine.js
- * Updates and renders entities, draws game board, calls the update and render methods on player and enemy objects (defined in app.js).
- * Makes the canvas' context (ctx) object globally available.
- */
+// Engine.js
+// Updates and renders entities, draws game board, calls the update and render methods on player and enemy objects (defined in app.js).
+// Makes the canvas' context (ctx) object globally available.
 
 var Engine = (function(global) {
-    // Defines variables, creates 2D canvas element, sets canvas elements height/width, adds canvas to the DOM.
+    // Defines variables, creates 2D canvas element, sets canvas elements height/width, adds canvas to the DOM
     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
@@ -17,7 +16,7 @@ var Engine = (function(global) {
 
     // Handles update() and render() calls
     function main() {
-        // Gets time delta to be used for smooth animation.
+        // Gets time delta to be used for smooth animation
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
@@ -28,7 +27,7 @@ var Engine = (function(global) {
         // Sets lastTime - used to determine time delta
         lastTime = now;
 
-        // Uses the browser's requestAnimationFrame function to call this function again as soon as the browser is able to draw another frame.
+        // Uses the browser's requestAnimationFrame function to call this function again as soon as the browser is able to draw another frame
         win.requestAnimationFrame(main);
     }
 
@@ -39,20 +38,13 @@ var Engine = (function(global) {
         main();
     }
 
-    /* Called by main(). Calls all functions which may be needed to update an entity's data.
-     * Either implement collision detection (when two entities occupy the same space) here, or in app.js. Commented out for the time being.
-     */
-
+    // Called by main(). Calls all functions which may be needed to update an entity's data
     function checkCollisions() {
       for (let eachEnemy of allEnemies) {
-        // console.log(eachEnemy);
-        // console.log('player', player.y);
         if (((player.x <= eachEnemy.x + 101) && (player.x >= eachEnemy.x - 101)) && (player.y === eachEnemy.y)) {
-          console.log('Bump.', eachEnemy)
           setTimeout(function(){
             player.reset()
           }, 1);
-
         }
       }
     }
@@ -61,8 +53,7 @@ var Engine = (function(global) {
         checkCollisions();
     }
 
-    /* Called by update(). Loops through objects within allEnemies[] in app.js, calls their update() methods, then calls update() of the player object. Update methods should focus purely on updating the data/properties related to the object. Do drawing in render methods.
-     */
+    // Called by update(). Loops through objects within allEnemies[] in app.js, calls their update() methods, then calls update() of the player object
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
@@ -92,13 +83,11 @@ var Engine = (function(global) {
         // Loops through rows and columns, then draws with images from rowImages[]
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
-                /* drawImage() is a canvas method with three parameters - image source, x coordinate & y coordinate (drawImage(image, x, y))
-                 * Resources helpers are used to refer to images so images are cached.
-                 */
+                // drawImage() is a canvas method with three parameters - image source, x coordinate & y coordinate (drawImage(image, x, y))
+                 // Resources helpers are used to refer to images so images are cached.
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
-
         renderEntities();
     }
 
@@ -112,12 +101,12 @@ var Engine = (function(global) {
         player.render();
     }
 
-    // Could be used to handle game reset states - new game menu, game over screen. Called once by the init() method.
+    // Could be used to handle game reset states - new game menu, game over screen. Called once by the init() method
     // function reset() {
     //     // noop
     // }
 
-    // Loads all images needed to draw game level, then sets init as the callback method so game will start when all images are loaded.
+    // Loads all images needed to draw game level, then sets init as the callback method so game will start when all images are loaded
     Resources.load([
         'images/stone-block.png',
         'images/water-block.png',
